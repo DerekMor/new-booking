@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-$n3+ivvg+k7+9_^-^bh$vql6hi$i-x^c)daw9g&jl4_vixs%_@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-derekmor-new-booking-opx1bv4919.us2.codeanyapp.com']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "bookings",
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +68,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = "restaurant_booking.wsgi.application"
