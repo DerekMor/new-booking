@@ -35,3 +35,7 @@ def booking_list(request):
 def fully_booked_slots(request):
     fully_booked_slots = Booking.objects.filter(canceled=False).values_list('time', flat=True)
     return JsonResponse(list(fully_booked_slots), safe=False)
+    
+
+def home(request):
+    return render(request, 'home.html', {'user': request.user})
