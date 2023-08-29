@@ -29,4 +29,16 @@
         <button type="submit">Book a Table</button>
     </form>
 </div>
+
+<script>
+    var fullyBookedSlots = [{% for booking in fully_booked_slots %}"{{ booking.time }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+
+    var timeSelect = document.querySelector('select[name="time"]');
+    for (var i = 0; i < timeSelect.options.length; i++) {
+        var option = timeSelect.options[i];
+        if (fullyBookedSlots.includes(option.value)) {
+            option.disabled = true;
+        }
+    }
+</script>
 {% endblock %}
