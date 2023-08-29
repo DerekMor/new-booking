@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-
 from django.contrib.auth.decorators import login_required
 from .models import Booking
 from datetime import datetime
+from django.http import JsonResponse
 
 @login_required
 def create_booking(request):
@@ -26,3 +26,12 @@ def cancel_booking(request, booking_id):
 
     return redirect('booking_list')
 
+@login_required
+def booking_list(request):
+    bookings = Booking.objects.filter(canceled=False)
+    return render(request, 'booking/booking_list.html', {'bookings': bookings})
+
+@login_required
+def fully_booked_slots(request):
+    fully_booked_slots = Booking.objects.filter(canceled=False).values_list('time', flat=True)
+    return JsonResponse(list(fully_booked_slots), safe=False)
