@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to the Exclusive Restaurant{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Exclusive Restaurant</h1>
+    <p>
+        To make a booking, please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a>.
+    </p>
+    <p>
+        You can also go directly to our <a href="{% url 'booking_list' %}">booking page</a>.
+    </p>
+{% endblock %}
