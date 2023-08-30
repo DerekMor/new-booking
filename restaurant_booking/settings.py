@@ -130,3 +130,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-derekmor-newbooking-dqsvk2fptl1.ws-eu104.gitpod.io'
+]
+
+LOGIN_REDIRECT_URL = 'booking_list' 
+ACCOUNT_SIGNUP_REDIRECT_URL = 'booking_list'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
