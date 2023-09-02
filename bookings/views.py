@@ -29,7 +29,18 @@ def cancel_booking(request, booking_id):
 @login_required
 def booking_list(request):
     bookings = Booking.objects.filter(canceled=False)
-    return render(request, 'bookings/booking_list.html', {'bookings': bookings})
+    opening_time = 17 
+    closing_time = 23 
+
+    available_time_slots = [
+        f"{hour:02d}:{minute:02d}"
+        for hour in range(opening_time, closing_time)
+        for minute in [0] 
+    ]
+
+    booked_time_slots = [booking.time.strftime('%H:%M') for booking in bookings]
+    available_time_slots = [slot for slot in available_time_slots if slot not in booked_time_slots]
+    return render(request, 'bookings/booking_list.html', {'bookings': bookings, 'available_time_slots': available_time_slots})
 
 @login_required
 def fully_booked_slots(request):
