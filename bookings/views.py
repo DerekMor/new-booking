@@ -3,22 +3,44 @@ from django.contrib.auth.decorators import login_required
 from .models import Booking
 from datetime import datetime
 from django.http import JsonResponse
+from .forms import BookingForm
+from datetime import date
+from django.contrib import messages
 
-@login_required
+
 def create_booking(request):
+    
     if request.method == 'POST':
-        date = request.POST['date']
-        time = request.POST['time']
-        datetime_obj = datetime.strptime(f"{date} {time}", "%Y-%m-%d %H:%M")
+        form = BookingForm(request.POST)
+        
+        if form.is_valid():
+            selected_date = form.cleaned_data['date']
+            time_string = form.cleaned_data['time'].strftime("%H:%M")
+            datetime_obj = datetime.strptime(f"{selected_date} {time_string}", "%Y-%m-%d %H:%M")
+            hour = datetime_obj.hour
+            minute = datetime_obj.minute
 
-        if Booking.objects.filter(date=datetime_obj.date(), time=datetime_obj.time()).count() < 4:
-            Booking.objects.create(user=request.user, date=datetime_obj.date(), time=datetime_obj.time())
+            today = date.today()
+
+            if datetime_obj.date() < today:
+                messages.error(request, 'Selected date cannot be in the past.')
+            elif Booking.objects.filter(date=datetime_obj.date(), time=f"{hour}:{minute}", canceled=False).count() < 4:
+                Booking.objects.create(user=request.user, date=datetime_obj.date(), time=f"{hour}:{minute}")
+                messages.success(request, 'Booking successful!')
+            else:
+                messages.error(request, 'Booking slot is already full.')
+        else:
+            messages.error(request, 'Invalid form data. Please check your inputs.')
+
+    else:
+        form = BookingForm()
 
     return redirect('booking_list')
 
 @login_required
 def cancel_booking(request, booking_id):
     booking = Booking.objects.get(pk=booking_id)
+
 
     if booking.user == request.user:
         booking.canceled = True
@@ -40,7 +62,7 @@ def booking_list(request):
 
     booked_time_slots = [booking.time.strftime('%H:%M') for booking in bookings]
     available_time_slots = [slot for slot in available_time_slots if slot not in booked_time_slots]
-    return render(request, 'bookings/booking_list.html', {'bookings': bookings, 'available_time_slots': available_time_slots})
+    return render(request, 'bookings/booking_list.html', {'bookings': bookings, 'available_time_slots': available_time_slots, })
 
 @login_required
 def fully_booked_slots(request):
