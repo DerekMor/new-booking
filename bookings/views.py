@@ -15,7 +15,8 @@ def create_booking(request):
         
         if form.is_valid():
             selected_date = form.cleaned_data['date']
-            time_string = form.cleaned_data['time'].strftime("%H:%M")
+            time = form.cleaned_data['time']
+            time_string = f"{time}"
             datetime_obj = datetime.strptime(f"{selected_date} {time_string}", "%Y-%m-%d %H:%M")
             hour = datetime_obj.hour
             minute = datetime_obj.minute
@@ -62,7 +63,9 @@ def booking_list(request):
 
     booked_time_slots = [booking.time.strftime('%H:%M') for booking in bookings]
     available_time_slots = [slot for slot in available_time_slots if slot not in booked_time_slots]
-    return render(request, 'bookings/booking_list.html', {'bookings': bookings, 'available_time_slots': available_time_slots, })
+    form = BookingForm()
+    
+    return render(request, 'bookings/booking_list.html', {'bookings': bookings, 'available_time_slots': available_time_slots, 'form': form})
 
 @login_required
 def fully_booked_slots(request):
