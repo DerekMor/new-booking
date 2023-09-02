@@ -3,11 +3,17 @@
 {% block title %}Welcome to the Exclusive Restaurant{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the Exclusive Restaurant</h1>
-    <p>
-        To make a booking, please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a>.
-    </p>
-    <p>
-        You can also go directly to our <a href="{% url 'booking_list' %}">booking page</a>.
-    </p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center">Welcome to the Exclusive Restaurant</h1>
+            <p class="text-center">
+                To make a booking, please <a href="{% url 'account_login' %}" class="btn btn-secondary">Log In</a> or <a href="{% url 'account_signup' %}" class="btn btn-secondary">Sign Up</a>.
+            </p>
+            <p class="text-center">
+                You can also go directly to our <a href="{% url 'booking_list' %}" class="btn btn-secondary">Booking Page</a>.
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}
