@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'bookings/base.html' %}
 
 {% load i18n %}
 {% load account socialaccount %}
@@ -6,7 +6,7 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-<div class="order-summary">
+<div >
     <h1>{% trans "Sign In" %}</h1>
 
     {% get_providers as socialaccount_providers %}

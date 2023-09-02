@@ -29,7 +29,7 @@ def cancel_booking(request, booking_id):
 @login_required
 def booking_list(request):
     bookings = Booking.objects.filter(canceled=False)
-    return render(request, 'booking/booking_list.html', {'bookings': bookings})
+    return render(request, 'bookings/booking_list.html', {'bookings': bookings})
 
 @login_required
 def fully_booked_slots(request):
@@ -38,4 +38,4 @@ def fully_booked_slots(request):
     
 
 def home(request):
-    return render(request, 'home.html', {'user': request.user})
+    return render(request, 'bookings/home.html', {'user': request.user})

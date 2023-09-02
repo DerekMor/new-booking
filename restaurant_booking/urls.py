@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from bookings.views import booking_list
 from bookings.views import home
+from allauth.account.views import LoginView, LogoutView, SignupView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,4 +26,5 @@ urlpatterns = [
     path("accounts/", include("allauth.socialaccount.urls")),
     path("", home, name="home"),
     path("bookings/", include("bookings.urls")),
+    path('accounts/login/', LoginView.as_view(), name='account_login'),
 ]
