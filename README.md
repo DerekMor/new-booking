@@ -32,3 +32,21 @@ Exclusive Restaurant is a web application that allows users to make restaurant b
 - **Admin Panel**: Admins can access an admin panel to create and cancel bookings for users.
 <img src="images/admin.png" alt="Login page screenshot">
 
+## Features Not Implemented
+
+- **Select Box Improvement**: The select box for time slots currently doesn't show booked-up time slots, which could be a useful improvement. I did try to implement this using both javascipt and modifying the view but kept causing bugs so it was removed.
+
+- **User Profile Page**: A user profile page to allow users to amend their bookings without canceling and rebooking.
+
+## Testing
+
+The website has undergone thorough testing, including:
+
+- Manual testing of user signups and logins.
+- Manual testing of booking creation and cancellation.
+- Cross-browser and cross-device testing for responsiveness.
+- Code checkers were not used on all files as the settings file show many errors but work fine but all template files, views and urls pass.
+
+## Bugs
+- Main bug fixed was being able to book a table for a date in the past which i tried many solutions which usually broke the code further. I was trying to use the date time class to pass a datetime to my form but no matter what i tried from anywhere i could find I was getting errors about it adding on seconds to the time the my form/model wasnt expecting. I ended up defining a custom list of time choices in my forms.py file to solve this issue. Some of the previous code still remains in the views.py file that I would like to make work in the future.
+- In the features not impemented section above I noted not showing the select option for a time if it is fully booked. At the moment a user can still try to book a fully booked slot but a message saying the slot is fully booked will show in messages. I thought i was close with this one but eventually ran out of time. The code I added checked times but if a slot was booked for a certain time on any day it would remove that slot from every day instead of just the day that was fully booked. 
