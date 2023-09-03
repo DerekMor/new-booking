@@ -50,3 +50,20 @@ The website has undergone thorough testing, including:
 ## Bugs
 - Main bug fixed was being able to book a table for a date in the past which i tried many solutions which usually broke the code further. I was trying to use the date time class to pass a datetime to my form but no matter what i tried from anywhere i could find I was getting errors about it adding on seconds to the time the my form/model wasnt expecting. I ended up defining a custom list of time choices in my forms.py file to solve this issue. Some of the previous code still remains in the views.py file that I would like to make work in the future.
 - In the features not impemented section above I noted not showing the select option for a time if it is fully booked. At the moment a user can still try to book a fully booked slot but a message saying the slot is fully booked will show in messages. I thought i was close with this one but eventually ran out of time. The code I added checked times but if a slot was booked for a certain time on any day it would remove that slot from every day instead of just the day that was fully booked. 
+
+## Deployment
+
+The website is deployed on Heroku with the PostgreSQL database hosted on ElephantSQL. Cloudinary is used for image management.
+
+To deploy the website:
+
+1. Create a Heroku app.
+2. Set up the PostgreSQL database on ElephantSQL.
+3. Configure Cloudinary for image management.
+4. Push the code to Heroku using Git.
+
+## Credits
+- Having created an e-commerce site before this one I was able to borrow some features from that one for this. <a href="https://github.com/DerekMor/legends_gym"> Link to the GitHub repo.</a> From this I used the messages section almost exactly and I also repurposed the shopping cart summary that listed the items in a shopping cart for this project as the booking list, almost the same but looped through a users booking and listed them with the ability to cancel them.
+- Bootstraps documentation is also incredibly helpful
+- Stackoverflow for ideas on solving my datetime error
+- CodeInstitute Django Deployment Instrucions Google Drive file
