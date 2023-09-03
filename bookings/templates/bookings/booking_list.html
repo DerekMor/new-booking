@@ -1,18 +1,18 @@
 {% extends 'bookings/base.html' %}
 
 {% block content %}
-<div class="container overlay">
+<div class="container overlay text-center">
     <h1>Booking List</h1>
     <ul>
         {% for booking in bookings %}
             <li>
                 {{ booking.date }} {{ booking.time }}
                 {% if booking.user == request.user %}
-                    <a href="{% url 'cancel_booking' booking.id %}">Cancel</a>
+                    <a href="{% url 'cancel_booking' booking.id %} " class="btn btn-danger">Cancel</a>
                 {% endif %}
             </li>
         {% empty %}
-            <p>No bookings available.</p>
+            <p>No bookings have been made.</p>
         {% endfor %}
     </ul>
     {% if booking_success %}
@@ -29,11 +29,15 @@
     
     <form method="POST" action="{% url 'create_booking' %}">
         {% csrf_token %}
-        <label for="{{ form.date.id_for_label }}">Date:</label>
-        {{ form.date }}
-        <label for="{{ form.time.id_for_label }}">Time:</label>
-        {{ form.time.as_widget }}
-        <button type="submit">Book a Table</button>
+        <div class="form-group">
+            <label for="{{ form.date.id_for_label }}">Date:</label>
+            {{ form.date }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.time.id_for_label }}">Time:</label>
+            {{ form.time }}
+        </div>
+        <button type="submit" class="btn btn-primary">Book a Table</button>
     </form>
     
 </div>

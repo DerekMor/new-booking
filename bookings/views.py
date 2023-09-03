@@ -46,6 +46,7 @@ def cancel_booking(request, booking_id):
     if booking.user == request.user:
         booking.canceled = True
         booking.save()
+        messages.success(request, 'Booking has been successfully cancelled.')
 
     return redirect('booking_list')
 
