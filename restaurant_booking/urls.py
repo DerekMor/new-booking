@@ -19,6 +19,9 @@ from django.urls import path, include
 from bookings.views import booking_list
 from bookings.views import home
 from allauth.account.views import LoginView, LogoutView, SignupView
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,4 +30,9 @@ urlpatterns = [
     path("", home, name="home"),
     path("bookings/", include("bookings.urls")),
     path('accounts/login/', LoginView.as_view(), name='account_login'),
+    path('accounts/logout/', LogoutView.as_view(), name='account_logout'),
+    path('accounts/signup/', SignupView.as_view(), name='account_signup'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
