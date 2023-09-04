@@ -51,6 +51,31 @@ The website has undergone thorough testing, including:
 - Main bug fixed was being able to book a table for a date in the past which i tried many solutions which usually broke the code further. I was trying to use the date time class to pass a datetime to my form but no matter what i tried from anywhere i could find I was getting errors about it adding on seconds to the time the my form/model wasnt expecting. I ended up defining a custom list of time choices in my forms.py file to solve this issue. Some of the previous code still remains in the views.py file that I would like to make work in the future.
 - In the features not impemented section above I noted not showing the select option for a time if it is fully booked. At the moment a user can still try to book a fully booked slot but a message saying the slot is fully booked will show in messages. I thought i was close with this one but eventually ran out of time. The code I added checked times but if a slot was booked for a certain time on any day it would remove that slot from every day instead of just the day that was fully booked. 
 
+## Agile
+
+### User Stories for Customers
+
+1. As a customer, I want to create an account and log in securely to access the booking functionality.
+
+2. As a customer, I want to select my preferred date and time for a restaurant booking.
+
+3. As a customer, I want to receive confirmation and notification messages after successfully making a booking.
+
+4. As a customer, I want the ability to cancel my booking if my plans change.
+
+### User Stories for the Business
+
+1. As the business owner, I want a secure authentication system to manage customer accounts.
+
+2. As the business owner, I want a booking system that allows customers to reserve tables for specific dates and times.
+
+3. As the business owner, I want to have access to an admin panel to create and cancel bookings on behalf of customers.
+
+### Task list
+
+1. Task list is a project part of the repository
+<img src="images/agile.png" alt="Agile tasks screenshot">
+
 ## Deployment
 
 The website is deployed on Heroku with the PostgreSQL database hosted on ElephantSQL. Cloudinary is used for image management.
