@@ -43,8 +43,8 @@ Exclusive Restaurant is a web application that allows users to make restaurant b
 The website has undergone thorough testing, including:
 
 - Manual testing of user signups and logins.
-- Manual testing of booking creation and cancellation.
-- Cross-browser and cross-device testing for responsiveness.
+- Manual testing of booking creation and cancellation through form and admin panel.
+- Multiple browser and screen size testing for responsiveness.
 - Code checkers were not used on all files as the settings file show many errors but work fine but all template files, views and urls pass.
 
 ## Bugs
@@ -73,7 +73,7 @@ The website has undergone thorough testing, including:
 
 ### Task list
 
-1. Task list is a project part of the repository
+1. Task list is a project part of the repository.
 <img src="images/agile.png" alt="Agile tasks screenshot">
 
 ## Deployment
