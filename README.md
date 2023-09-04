@@ -1,6 +1,6 @@
 # Exclusive Restaurant
 
-Exclusive Restaurant is a web application that allows users to make restaurant bookings. It is built using various technologies and frameworks and deployed using Heroku, Cloudinary and ElephantSQL, a description of all these is provided below. Here is a link to the deployed website. \
+Exclusive Restaurant is a web application that allows users to make restaurant bookings. It is built using various technologies and frameworks and deployed using Heroku, Cloudinary and ElephantSQL, a description of all these is provided below. <a href="https://new-booking-7a8727b77a73.herokuapp.com/">Here is a link to the deployed website.</a> \
 **Note:** This booking system would not be a whole restaurants website but only the booking system feature for one. This app has full functionality for authentication and creating bookings but is only a basic app and should be included in and styled to suit a full restaurant website. The current version has very little CSS and is mainly styled with Bootstrap classes to allow custom classes to be added to elements when integrating into a larger project.
 
 ## Technologies and Frameworks Used
